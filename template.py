@@ -21,7 +21,7 @@ for filepath in list_of_files:
 
     if filedir != "":
         os.makedirs(filedir,exist_ok = True)
-        logging.info(f"Creating Directory; {filedir} for th file: {filename}")
+        logging.info(f"Creating Directory; {filedir} for the file: {filename}")
 
     if(not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
         with open(filepath, "w") as f:
