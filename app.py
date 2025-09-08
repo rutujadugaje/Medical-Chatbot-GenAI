@@ -42,7 +42,6 @@ llm = ChatGoogleGenerativeAI(
     max_output_tokens=500
 )
 
-
 prompt=ChatPromptTemplate.from_messages(
     [
         ("system",system_prompt),
@@ -50,9 +49,9 @@ prompt=ChatPromptTemplate.from_messages(
     ]
 )
 
-
 question_ans_chain = create_stuff_documents_chain(llm,prompt)
 rag_chain = create_retrieval_chain(retriver,question_ans_chain)
+
 
 @app.route("/")
 def index():

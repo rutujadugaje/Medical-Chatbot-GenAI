@@ -13,7 +13,6 @@ def load_pdf_file(data):
     return documents
 
 
-
 # Split the data into text chunks
 def text_split(extracted_data):
     text_splitter = RecursiveCharacterTextSplitter(
@@ -22,7 +21,6 @@ def text_split(extracted_data):
     )
     text_chunks = text_splitter.split_documents(extracted_data)
     return text_chunks
-
 
 
 #Download the Embedings from Hugging Face
