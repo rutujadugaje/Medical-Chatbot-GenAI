@@ -38,10 +38,17 @@ export default function Chatbot() {
     <>
       {/* Floating Chat Button (shown when closed) */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+
+          {/* Floating text bubble */}
+          <div className="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-lg shadow-md border border-gray-200 animate-bounce">
+            Your health buddy is here!💚
+          </div>
+
+          {/* Floating Chat Button */}
           <button
             onClick={() => setIsOpen(true)}
-            className="w-14 h-14 bg-green-600 rounded-full shadow-md flex items-center justify-center text-white text-2xl transition duration-200 hover:scale-105 animate-bounce"
+            className="w-14 h-14 bg-green-600 rounded-full shadow-md flex items-center justify-center text-white text-2xl transition duration-200 hover:scale-110 animate-bounce"
             aria-label="Open chat"
           >
             💬
@@ -52,7 +59,7 @@ export default function Chatbot() {
       {/* Dim overlay (appears when chat is open) */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-green-100/50 z-40 backdrop-blur-2xl" 
+          className="fixed inset-0 opacity-50 z-40 backdrop-blur-2xl" 
           onClick={() => setIsOpen(false)} // click outside closes chat
         />
       )}

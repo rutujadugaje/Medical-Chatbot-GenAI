@@ -1,7 +1,14 @@
-import Chat from "./Chat";
+// import Chat from "./Chat";
+import LandingPage from "./LandingPage";
 
 function App() {
-  return <Chat />;
+  return (
+  <>
+    <LandingPage/>
+    {/* <Chat /> */}
+    
+  </>
+  )
 }
 
 export default App;
