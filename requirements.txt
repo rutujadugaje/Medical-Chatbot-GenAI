@@ -20,7 +20,7 @@ Flask==3.1.2
 flask-cors==6.0.1
 frozenlist==1.7.0
 fsspec==2025.7.0
--e git+https://github.com/rutujadugaje/Medical-Chatbot-GenAI.git@0da57af9c6a55b35b318e9611828470fa68b51d5#egg=Generative_AI_Project
+# -e git+https://github.com/rutujadugaje/Medical-Chatbot-GenAI.git@0da57af9c6a55b35b318e9611828470fa68b51d5#egg=Generative_AI_Project
 google-ai-generativelanguage==0.6.18
 google-api-core==2.25.1
 google-auth==2.40.3
