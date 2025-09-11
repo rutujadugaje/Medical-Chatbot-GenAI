@@ -1,7 +1,9 @@
 from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
+import os
 
+os.environ["HF_HOME"] = os.path.expanduser("~/.cache/huggingface")
 
 #Extracted Data From pdf file
 def load_pdf_file(data):

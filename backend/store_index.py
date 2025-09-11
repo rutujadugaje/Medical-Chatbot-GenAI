@@ -1,4 +1,4 @@
-from src.helper import load_pdf_file, text_split, download_hugging_face_embeddings
+from src.helper import load_pdf_file, text_split, download_google_embeddings
 from pinecone.grpc import PineconeGRPC as Pinecone 
 from langchain_pinecone import PineconeVectorStore
 from pinecone import ServerlessSpec
@@ -28,7 +28,7 @@ all_chunks = data_chunks + new_book_chunks
 
 
 #  2: Download embeddings
-embeddings = download_hugging_face_embeddings()
+embeddings = download_google_embeddings()
 
 # 3: pinecone initialization
 pc = Pinecone(api_key=PINECONE_API_KEY)
