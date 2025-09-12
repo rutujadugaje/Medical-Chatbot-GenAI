@@ -112,3 +112,10 @@ docker logs bf0d198f45f8     #type container id here
  cd backend/
  ls -la
  
+
+
+
+
+ docker ps
+ docker rm -f 2b2ff94e43bb
+  docker system prune -a -f
