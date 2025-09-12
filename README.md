@@ -1,5 +1,6 @@
 ### Techstack Used:
 
+ 
 - Python
 - LangChain
 - Flask
@@ -112,6 +113,7 @@ docker logs bf0d198f45f8     #type container id here
  cd backend/
  ls -la
  
+<<<<<<< HEAD
 
 
 
@@ -119,3 +121,5 @@ docker logs bf0d198f45f8     #type container id here
  docker ps
  docker rm -f 2b2ff94e43bb
   docker system prune -a -f
+=======
+>>>>>>> 4c65db5b457f9ec44f273f00336177ac285b1ba2
