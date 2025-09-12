@@ -87,7 +87,7 @@ export default function Chatbot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                aria-label="Close chat"
+                aria-label="Close chat" 
                 className="p-1 rounded-full hover:bg-green-700/80 transition"
               >
                 <IoClose size={22} className="text-white" />

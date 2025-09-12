@@ -82,31 +82,33 @@
 
 
 
-
-
-
-
-
-   # Create a folder
-$ mkdir actions-runner && cd actions-runner      
-$ curl -o actions-runner-linux-x64-2.328.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.328.0/actions-runner-linux-x64-2.328.0.tar.gz              
-$ echo "01066fad3a2893e63e6ca880ae3a1fad5bf9329d60e77ee15f2b97c148c3cd4e  actions-runner-linux-x64-2.328.0.tar.gz" | shasum -a 256 -c      
-$ tar xzf ./actions-runner-linux-x64-2.328.0.tar.gz
-
-
-
-
-
-
-
-
-
 run command
 <!-- CMD uvicorn main_demo:app --host 0.0.0.0 --port 8000 -->
+docker run -it -p 8080:8080 -e PINECONE_API_KEY=pcsk_6ifaW2_Q6RZEH9yszDxYQkfxYKjEhHYr7FWGC3pRR8fMerLsqjHNL73bn2CLf5pEkrfj7R -e GOOGLE_API_KEY=AIzaSyBwiWy-lbKn_MhosBjRnMeheJz0hgOTon0  medical-chatbot:v1 
+
+docker run -it -p 8080:8080 medical-chatbot:v1
 
 
+# frontend buld
+cd frontend
+docker build --no-cache -t medical-frontend:v1 .     
+docker run -d -p 80:80 medical-frontend:v1 .   
+
+
+
+# docker initializing and build,run 
 docker init
- docker build --no-cache -t medical-chatbot:v1 .
-  docker history medical-chatbot:v1
-   docker system prune -a -f
-   
+docker build --no-cache -t medical-chatbot:v1 .
+docker history medical-chatbot:v1
+docker system prune -a -f
+
+
+
+
+# EC2 ubuntu command
+docker ps -a
+docker logs bf0d198f45f8     #type container id here
+ ls -la
+ cd backend/
+ ls -la
+ 
