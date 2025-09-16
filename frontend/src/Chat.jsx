@@ -39,9 +39,8 @@ export default function Chatbot() {
       {/* Floating Chat Button (shown when closed) */}
       {!isOpen && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-
           {/* Floating text bubble */}
-          <div className="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-lg shadow-md border border-gray-200 animate-bounce">
+          <div className="bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-lg shadow-md border border-gray-200 animate-bounce hidden sm:block">
             Your health buddy is here!💚
           </div>
 
@@ -56,25 +55,22 @@ export default function Chatbot() {
         </div>
       )}
 
-      {/* Dim overlay (appears when chat is open) */}
+      {/* Dim overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 opacity-50 z-40 backdrop-blur-2xl" 
-          onClick={() => setIsOpen(false)} // click outside closes chat
+          className="fixed inset-0 opacity-50 z-40 backdrop-blur-2xl"
+          onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Chat Window container */}
       <div
-        // keep it fixed bottom-right and above overlay (z-50)
-        className={`fixed bottom-6 right-6 z-50 transition-all duration-300 overflow-hidden   ${
-          isOpen ? "w-[400px] h-[520px] shadow-xl rounded-2xl" : "w-0 h-0"
-        }`}
-        // prevent clicks inside the chat from closing it (stop overlay click propagation)
+        className={`fixed bottom-0 sm:bottom-6 right-0 sm:right-6 z-50 transition-all duration-300 overflow-hidden
+        ${isOpen ? "w-full h-full sm:w-[400px] sm:h-[520px] shadow-xl rounded-none sm:rounded-2xl" : "w-0 h-0"}`}
         onClick={(e) => e.stopPropagation()}
       >
         {isOpen && (
-          <div className="w-full h-full bg-white rounded-2xl shadow-xl ring-1 ring-green-200 flex flex-col overflow-hidden">
+          <div className="w-full h-full bg-white sm:rounded-2xl shadow-xl ring-1 ring-green-200 flex flex-col overflow-hidden">
             {/* Header */}
             <div className="bg-green-600 text-white p-4 flex items-center justify-between font-semibold text-lg">
               <div className="flex items-center gap-2">
@@ -87,7 +83,7 @@ export default function Chatbot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                aria-label="Close chat" 
+                aria-label="Close chat"
                 className="p-1 rounded-full hover:bg-green-700/80 transition"
               >
                 <IoClose size={22} className="text-white" />
@@ -99,9 +95,7 @@ export default function Chatbot() {
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-start gap-2 ${
-                    msg.sender === "user" ? "justify-end" : "justify-start"
-                  }`}
+                  className={`flex items-start gap-2 ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   {msg.sender === "bot" && (
                     <img
@@ -111,11 +105,8 @@ export default function Chatbot() {
                     />
                   )}
                   <div
-                    className={`p-3 rounded-2xl max-w-[70%] text-sm font-medium shadow-sm transition ${
-                      msg.sender === "bot"
-                        ? "bg-green-100 text-gray-800"
-                        : "bg-blue-100 text-gray-900"
-                    }`}
+                    className={`p-3 rounded-2xl max-w-[75%] text-sm font-medium shadow-sm transition
+                    ${msg.sender === "bot" ? "bg-green-100 text-gray-800" : "bg-blue-100 text-gray-900"}`}
                   >
                     {msg.text}
                   </div>
@@ -123,7 +114,7 @@ export default function Chatbot() {
               ))}
             </div>
 
-            {/* Chat Input (no blur) */}
+            {/* Chat Input */}
             <form onSubmit={sendMessage} className="flex items-center border-t border-gray-200 p-2 bg-white">
               <input
                 type="text"
