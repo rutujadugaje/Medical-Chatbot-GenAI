@@ -18,7 +18,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const res = await fetch("http://127.0.0.1:8080/get", {
+      const res = await fetch("http://3.109.144.172:8080/get", {
         method: "POST",
         body: new URLSearchParams({ msg: input }),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -74,7 +74,7 @@ export default function Chatbot() {
         onClick={(e) => e.stopPropagation()}
       >
         {isOpen && (
-          <div className="w-[400px] h-[520px] bg-white rounded-2xl shadow-3xl ring-1 ring-green-200 flex flex-col overflow-hidden">
+          <div className="w-full h-full bg-white rounded-2xl shadow-xl ring-1 ring-green-200 flex flex-col overflow-hidden">
             {/* Header */}
             <div className="bg-green-600 text-white p-4 flex items-center justify-between font-semibold text-lg">
               <div className="flex items-center gap-2">
