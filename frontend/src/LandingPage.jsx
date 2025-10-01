@@ -1,4 +1,3 @@
-import React from "react";
 import Chatbot from "./Chat";
 import doctorImg_home from "./assets/dr.png";
 

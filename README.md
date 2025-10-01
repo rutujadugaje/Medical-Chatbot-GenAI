@@ -123,3 +123,11 @@ docker logs bf0d198f45f8     #type container id here
   docker system prune -a -f
 =======
 >>>>>>> 4c65db5b457f9ec44f273f00336177ac285b1ba2
+
+
+
+
+sudo su = Command for switching the user(by default, it switches to the root user). There are two users in this system, root and ubuntu
+ps aux = is a Linux/Unix command used to show running processes.
+ll =
+tail -f output.log = 

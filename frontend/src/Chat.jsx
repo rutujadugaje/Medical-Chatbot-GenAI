@@ -11,6 +11,7 @@ export default function Chatbot() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    
     if (!input.trim()) return;
 
     const newMsg = { sender: "user", text: input };
