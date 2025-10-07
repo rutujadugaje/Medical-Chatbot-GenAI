@@ -61,11 +61,21 @@ def index():
 @app.route("/get", methods=["GET", "POST"])
 def chat():
     msg = request.form["msg"]
-    input = msg
-    print(input)
+    print("User Input:", msg)
+
+    # Try retrieving from vector DB
     response = rag_chain.invoke({"input": msg})
-    print(" Response: ", response["answer"])
-    return str(response['answer'])
+    answer = response.get("answer", "").strip()
+
+    # If vector DB answer is empty, use LLM
+    if not answer:
+        # Directly call LLM
+        answer = llm.invoke({"input": msg}).get("output", "").strip()
+
+    print("Response:", answer)
+    return str(answer)
+
+
 
 
 if __name__ ==  '__main__':

@@ -6,8 +6,8 @@ system_prompt = (
     Use the retrieved context below to answer the user's question in a clear and natural way.
     Do not mention that the information came from a book, context, or source—just provide the answer directly. 
     Do not answered the question briefly, Give short and sober answer. 
-    If you don't know the answer, say you don't know. 
-    Keep the answer concise (maximum three sentences).
+    If the answer is not found in the retrieved context, use your own knowledge (via the LLM) to provide the best possible answer. 
+    Keep the answer concise (maximum two sentences) and easy to understand.
     \n\n
     {context}
     '''

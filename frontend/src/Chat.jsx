@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useRef, useEffect  } from "react";
 import { IoSend, IoClose } from "react-icons/io5";
 import doctorImg from "./assets/doctor.png";
 
@@ -8,6 +8,16 @@ export default function Chatbot() {
   ]);
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const chatContainerRef = useRef(null);  //create ref
+
+  // Scroll to bottom whenever messages update
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -19,7 +29,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const res = await fetch("http://3.109.144.172:8080/get", {
+      const res = await fetch("http://127.0.0.1:8080/get", {
         method: "POST",
         body: new URLSearchParams({ msg: input }),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -72,6 +82,8 @@ export default function Chatbot() {
       >
         {isOpen && (
           <div className="w-full h-full bg-white sm:rounded-2xl shadow-xl ring-1 ring-green-200 flex flex-col overflow-hidden">
+
+            
             {/* Header */}
             <div className="bg-green-600 text-white p-4 flex items-center justify-between font-semibold text-lg">
               <div className="flex items-center gap-2">
@@ -92,7 +104,9 @@ export default function Chatbot() {
             </div>
 
             {/* Chat Box */}
-            <div className="flex-1 p-4 overflow-y-auto flex flex-col gap-3">
+            <div
+            ref={chatContainerRef} 
+            className="flex-1 p-4 overflow-y-auto flex flex-col gap-3">
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
