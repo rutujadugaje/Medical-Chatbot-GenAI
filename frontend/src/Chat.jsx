@@ -29,7 +29,7 @@ export default function Chatbot() {
     setInput("");
 
     try {
-      const res = await fetch("http://127.0.0.1:8080/get", {
+      const res = await fetch("http://3.109.144.172:8080/get", {
         method: "POST",
         body: new URLSearchParams({ msg: input }),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
